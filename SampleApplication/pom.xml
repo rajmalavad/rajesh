@@ -1,13 +1,38 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.javacodegeeks</groupId>
-  <artifactId>SampleApplication</artifactId>
-  <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>SampleApplication</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
+<properties>
+    <build.manifest.section>Build Details</build.manifest.section>
+    <build.unknown>UNKNOWN</build.unknown>
+    <build.number>${build.unknown}</build.number>
+    <build.revision>${build.unknown}</build.revision>
+</properties>
+<plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+            <archive>
+                <manifest>
+                    <addClasspath>true</addClasspath>
+                </manifest>
+                <manifestEntries>
+                    <Build-Time>${maven.build.timestamp}</Build-Time>  
+                </manifestEntries>
+                <manifestSections>
+                    <manifestSection>
+                        <name>${build.manifest.section}</name>
+                        <manifestEntries>
+                            <Implementation-Title>${project.name}</Implementation-Title>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                            <Implementation-Build-Number>${build.number}</Implementation-Build-Number>
+                            <Implementation-SCM-Revision>${build.revision}</Implementation-SCM-Revision>
+                        </manifestEntries>
+                    </manifestSection>
+                </manifestSections>
+            </archive>
+        </configuration>
+    </plugin>
+</plugins>
+<dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -15,4 +40,3 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-</project>
