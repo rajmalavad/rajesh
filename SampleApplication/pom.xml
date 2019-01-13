@@ -3,7 +3,6 @@
     <build.unknown>UNKNOWN</build.unknown>
     <build.number>${build.unknown}</build.number>
     <build.revision>${build.unknown}</build.revision>
-</project>
 <plugins>
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -40,3 +39,4 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+</project>
